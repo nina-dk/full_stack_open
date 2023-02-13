@@ -68,12 +68,10 @@ app.post("/api/persons", (req, res) => {
 
     if (!data.name || !data.number) {
         res.statusMessage = "Name and number are required.";
-        res.json({ error: "name and number required fields" });
-        res.sendStatus(400).end();
+        return res.status(400).json({ error: "name and number required fields" });
     } else if (contactExists()) {
         res.statusMessage = `${data.name} is already a registered contact.`;
-        res.json({ error: "name must be unique" });
-        res.sendStatus(400).end(); 
+        return res.status(400).json({ error: "name must be unique" });
     }
 
     let id = Math.floor(Math.random() * 10**10);

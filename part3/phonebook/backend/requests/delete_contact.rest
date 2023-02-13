@@ -1,1 +1,5 @@
+# Dev tests
 DELETE http://localhost:3001/api/persons/1
+
+# Deployed tests
+# DELETE https://phonebook-xqu9.onrender.com/api/persons/2
