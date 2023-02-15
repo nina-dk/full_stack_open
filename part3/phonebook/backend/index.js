@@ -91,6 +91,8 @@ app.delete("/api/persons/:id", (req, res) => {
 app.put("/api/persons/:id", (req, res) => {
   let id = +req.params.id;
   let contact = phonebook.find(contact => contact.id === id);
+  if (!contact) return res.sendStatus(404).end();
+
   contact.number = req.body.number;
   res.sendStatus(204).end();
 });
