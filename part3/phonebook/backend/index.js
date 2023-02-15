@@ -27,6 +27,7 @@ let phonebook = [
     }
 ];
 
+app.use(express.static("build"));
 app.use(express.json());
 
 morgan.token("data", (req, _) => {
@@ -75,14 +76,23 @@ app.post("/api/persons", (req, res) => {
     }
 
     let id = Math.floor(Math.random() * 10**10);
-    phonebook.push({ ...data, id });
-    res.sendStatus(201).end();
+    let newContact = { ...data, id };
+    phonebook.push(newContact);
+    res.statusCode = 201;
+    res.json(newContact);
 });
 
 app.delete("/api/persons/:id", (req, res) => {
     let id = +req.params.id;
     phonebook = phonebook.filter(contact => contact.id !== id);
     res.sendStatus(204).end();
+});
+
+app.put("/api/persons/:id", (req, res) => {
+  let id = +req.params.id;
+  let contact = phonebook.find(contact => contact.id === id);
+  contact.number = req.body.number;
+  res.sendStatus(204).end();
 });
 
 app.listen(PORT, () => console.log(`Server is app and running on port ${PORT}`));

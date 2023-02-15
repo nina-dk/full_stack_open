@@ -1,16 +1,17 @@
 # Dev tests
-POST http://localhost:3001/api/persons
+# POST http://localhost:3001/api/persons
+# Content-Type: application/json
+
+# {
+#     "name": "Nina Dobrev",
+#     "number": "9359395"
+# }
+
+# Deployed tests
+POST https://phonebook-xqu9.onrender.com/api/persons/
 Content-Type: application/json
 
 {
     "name": "Nina Dobrev",
-    "number": "9359395"
+    "number": "3959359"
 }
-
-# Deployed tests
-# POST https://phonebook-xqu9.onrender.com/api/persons/
-# Content-Type: application/json
-
-# {
-#     "name": "Nina Dobrev"
-# }
