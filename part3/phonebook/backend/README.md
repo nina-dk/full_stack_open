@@ -17,3 +17,7 @@ You can create a contact by making a POST request to: https://phonebook-xqu9.onr
 ### Delete a contact
 
 You can delete a contact by making a DELETE request to: https://phonebook-xqu9.onrender.com/api/persons/:id (where `:id` is replaced by the contact's `id` property).
+
+### Update a contact
+
+A contact's number can be updated by making a PUT request to: https://phonebook-xqu9.onrender.com/api/persons/:id (where `:id` is replaced by the contact's `id` property). The API expects a contact object in JSON format.
