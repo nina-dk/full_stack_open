@@ -1,0 +1,8 @@
+# Dev tests
+PUT http://localhost:3001/api/persons/63f0ab8b1c96b6e8fd89a61f
+Content-Type: application/json
+
+{
+    "name": "Nina Dobrev",
+    "number": "3333"
+}
