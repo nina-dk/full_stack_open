@@ -1,15 +1,15 @@
 const mongoose = require("mongoose");
 const URL = process.env.MONGODB_URL;
 
-mongoose.set("strictQuery",false);
+mongoose.set("strictQuery", false);
 mongoose.connect(URL)
-    .then(res => {
-        console.log(`connected to: ${URL}`);
-    })
-    .catch(err => {
-        console.log(`error connecting to: ${URL}`);
-        console.log(err.message);
-    });
+  .then(_ => {
+    console.log(`connected to: ${URL}`);
+  })
+  .catch(err => {
+    console.log(`error connecting to: ${URL}`);
+    console.log(err.message);
+  });
 
 const contactSchema = new mongoose.Schema({
   name: {
@@ -20,7 +20,7 @@ const contactSchema = new mongoose.Schema({
   number: {
     type: String,
     validate: {
-      validator: function(num) {
+      validator(num) {
         return /^((\d{2}-\d{6,})|(\d{3}-\d{5,})|(\d{8,}))$/.test(num);
       },
       message: props => `${props.value} is not a valid phone number!`
@@ -30,11 +30,11 @@ const contactSchema = new mongoose.Schema({
 });
 
 contactSchema.set("toJSON", {
-    transform: (document, returnedObject) => {
-      returnedObject.id = returnedObject._id.toString();
-      delete returnedObject._id;
-      delete returnedObject.__v;
-    }
+  transform: (document, returnedObject) => {
+    returnedObject.id = returnedObject._id.toString();
+    delete returnedObject._id;
+    delete returnedObject.__v;
+  }
 });
 
 module.exports = mongoose.model("Contact", contactSchema);

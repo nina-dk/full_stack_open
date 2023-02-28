@@ -1,0 +1,22 @@
+body {
+  color: rgb(34, 34, 34);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.notification {
+  background-color: rgb(244, 244, 244);
+  border-style: 3px solid;
+  border-radius: 4px;
+  font-size: 18px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.notification.success {
+  background-color: rgb(133, 233, 144);
+}
+
+.notification.error {
+  border-color: red;
+  color: red;
+}
